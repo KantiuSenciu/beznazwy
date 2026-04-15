@@ -1,35 +1,26 @@
-## to nie dziala ale trzeba bylo zrobic commit na lekcji
-
-p = open("skrot_przyklad.txt", 'r')
+p = open("skrot.txt", 'r')
 
 najwieksza = 0
-ni_ma = 0# tu zliczamy te co nie maja skrotu
+ni_ma = 0 # tu zliczamy te co nie maja skrotu
 
 for linia in p:
 
     liczba = linia.strip()
-
-    nie_moze_istniec = False
+    moze_istniec = False
 
     for x in liczba:
 
-        x = int(x)
+        if int(x)%2 != 0:
 
-        if x%2 != 0:
-
-            nie_moze_istniec = True
-
-            if nie_moze_istniec:
-                ni_ma += 1
-
-                if int(liczba) > najwieksza:
-                    najwieksza = int(liczba)
-
+            moze_istniec = True
             break
 
+    if not moze_istniec:
+        ni_ma += 1
+
+        if int(liczba) > najwieksza:
+            najwieksza = int(liczba)
 
 p.close()
 
-
 print(ni_ma,najwieksza)
-
